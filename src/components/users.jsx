@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import GroupList from './groupList'
 import api from '../api'
 import SearchStatus from './searchStatus'
-import UserTable from "./userstable"
+import UserTable from "./usersTable"
 
 const Users = ({ users: allUsers, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -58,9 +58,7 @@ const Users = ({ users: allUsers, ...rest }) => {
       )}
       <div className="d-flex flex-column">
         <SearchStatus length={count} />
-        {count > 0 && (
-          <UserTable users={usersCrop}{...resr}/>
-        )}
+        {count > 0 && <UserTable users={cropUser} {...rest} />}
         <div className="d-flex justify-content-center">
           <Pagination
             itemsCount={count}
