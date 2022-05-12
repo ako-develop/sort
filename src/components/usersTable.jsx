@@ -2,17 +2,17 @@ import React from "react";
 import PropTypes from "prop-types"
 import User from "./user";
 
-const UserTable = ({users, ...rest}) => {
+const UserTable = ({users, onSort, ...rest}) => {
     return <table className="table">
     <thead>
       <tr>
-        <th scope="col">Имя</th>
-        <th scope="col">Качества</th>
-        <th scope="col">Профессия</th>
-        <th scope="col">Встретился, раз</th>
-        <th scope="col">Оценки</th>
-        <th scope="col">Избранное</th>
-        <th scope="col" />
+        <th onClick={() => onSort('name')} scope="col">Имя</th>
+        <th  scope="col">Качества</th>
+        <th onClick={() => onSort('profession.name')} scope="col">Профессия</th>
+        <th onClick={() => onSort('completedMeetings')} scope="col">Встретился, раз</th>
+        <th onClick={() => onSort('rate')} scope="col">Оценки</th>
+        <th onClick={() => onSort('bookmark')} scope="col">Избранное</th>
+        <th />
       </tr>
     </thead>
     <tbody>
@@ -24,7 +24,8 @@ const UserTable = ({users, ...rest}) => {
 };
 //массив пользователей
 UserTable.propTypes = {
-    users: PropTypes.array.isRequired
+    users: PropTypes.array.isRequired,
+    onSort: PropTypes.func.isRequired
 };
 
 export default UserTable;
