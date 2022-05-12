@@ -6,13 +6,15 @@ import GroupList from './groupList'
 import api from '../api'
 import SearchStatus from './searchStatus'
 import UserTable from "./usersTable"
+import _ from "lodash"
 
 const Users = ({ users: allUsers, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [professions, setProfessions] = useState()
   const [selectedProf, setSelectedProf] = useState()
+  const [sortBy, setSortBy] = useState({iter:"name", order: "asc"})
 
-  const pageSize = 4
+  const pageSize = 12
 
   useEffect(async () => {
     const response = await api.professions.fetchAll()
@@ -32,7 +34,12 @@ const Users = ({ users: allUsers, ...rest }) => {
   }
 
   const handleSort = (item) => {
-    console.log(item);
+      if (sortBy.iter===item){
+        setSortBy((prevState)=>({...prevState, order:prevState.order==='asc' ? 'desc':'asc'}))
+      }else{
+        setSortBy({iter:item, order:'asc'})
+      }
+    
   }
 
   const clearFilter = () => {
@@ -43,7 +50,8 @@ const Users = ({ users: allUsers, ...rest }) => {
     ? allUsers.filter((user) => user.profession.name === selectedProf.name)
     : allUsers
   const count = filteredUsers.length
-  const cropUser = paginate(filteredUsers, currentPage, pageSize)
+  const sortedUsers = _.orderBy(filteredUsers, [sortBy.iter], [sortBy.order]);
+  const cropUser = paginate(sortedUsers, currentPage, pageSize)
 
   return (
     <div className="d-flex mt-2">
