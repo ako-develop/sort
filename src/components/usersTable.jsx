@@ -9,7 +9,7 @@ const UserTable = ({users, onSort, selectedSort, ...rest}) => {
         name: {path: "name", name: "Имя"},
         qualities: { name: "Качества" },
         professions: {path: "profession.name", name: "Профессия" },
-        completedMeetings: {path: "complitedMeetings", name:"Встретился, раз"},
+        completedMeetings: {path: "completedMeetings", name:"Встретился, раз"},
         rate:{path:"rate", name:"Оценка"},
         bookmark:{ path:"bookmark", name:"Избранное" },
         delete:{}
