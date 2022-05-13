@@ -14,7 +14,7 @@ const Users = ({ users: allUsers, ...rest }) => {
   const [selectedProf, setSelectedProf] = useState()
   const [sortBy, setSortBy] = useState({iter:"name", order: "asc"})
 
-  const pageSize = 12
+  const pageSize = 6
 
   useEffect(async () => {
     const response = await api.professions.fetchAll()
@@ -45,7 +45,7 @@ const Users = ({ users: allUsers, ...rest }) => {
     ? allUsers.filter((user) => user.profession.name === selectedProf.name)
     : allUsers
   const count = filteredUsers.length
-  const sortedUsers = _.orderBy(filteredUsers, [sortBy.iter], [sortBy.order]);
+  const sortedUsers = _.orderBy(filteredUsers, [sortBy.path], [sortBy.order]);
   const cropUser = paginate(sortedUsers, currentPage, pageSize)
 
   return (
