@@ -34,13 +34,8 @@ const Users = ({ users: allUsers, ...rest }) => {
   }
 
   const handleSort = (item) => {
-      if (sortBy.iter===item){
-        setSortBy((prevState)=>({...prevState, order:prevState.order==='asc' ? 'desc':'asc'}))
-      }else{
-        setSortBy({iter:item, order:'asc'})
-      }
-    
-  }
+      setSortBy(item);
+  };
 
   const clearFilter = () => {
     setSelectedProf()
@@ -70,7 +65,8 @@ const Users = ({ users: allUsers, ...rest }) => {
       )}
       <div className="d-flex flex-column">
         <SearchStatus length={count} />
-        {count > 0 && <UserTable users={cropUser} onSort={handleSort} {...rest} />}
+        {count > 0 && 
+        <UserTable users={cropUser} onSort={handleSort} currentSort={sortBy} {...rest} />}
         <div className="d-flex justify-content-center">
           <Pagination
             itemsCount={count}
