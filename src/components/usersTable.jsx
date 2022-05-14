@@ -9,7 +9,7 @@ const UserTable = ({users, onSort, selectedSort, onToggleBookMark, onDelete, ...
       const columns={
         name: {path: "name", name: "Имя"},
         qualities: { name: "Качества" },
-        professions: {path: "profession.name", name: "Профессия" },
+        profession: {path: "profession.name", name: "Профессия" },
         completedMeetings: {path: "completedMeetings", name:"Встретился, раз"},
         rate:{path:"rate", name:"Оценка"},
         bookmark:{ 
@@ -17,7 +17,7 @@ const UserTable = ({users, onSort, selectedSort, onToggleBookMark, onDelete, ...
           name:"Избранное", 
           component: (user) => (
             <BookMark
-            status={user.BookMark}
+            status={user.bookmark}
             // id={user._id}
             onClick={() => onToggleBookMark(user._id) }
             /> 
