@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const BookMark = ({ status, ...rest }) => {
-  console.log(BookMark)
+  console.log({...rest})
   const bookMarks = (textClass = '') => (
     <i className={'bi bi-check-circle' + textClass}></i>
   )
