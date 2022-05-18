@@ -1,12 +1,13 @@
 import React from 'react'
-import JoJo from './../utils/range'
+import _ from 'lodash'
+// import _createArrayByEziz_ from './../utils/range'
 import { PropTypes } from 'prop-types'
 
 const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
   const pageCount = Math.ceil(itemsCount / pageSize)
   if (pageCount === 1) return null
 
-  const pages = JoJo(1, pageCount + 1)
+  const pages = _.range(1, pageCount + 1)
 
   return (
     <nav>

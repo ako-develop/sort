@@ -1,10 +1,10 @@
 import React from 'react'
-import { addClass } from '../utils/yaPlakal'
+import { addClassName } from '../utils/yaPlakal'
 import PropTypes from 'prop-types'
 
 const Quality = ({ color, name, _id }) => {
   return (
-    <span key={_id} className={addClass(color)}>
+    <span key={_id} className={addClassName(color)}>
       {name}
     </span>
   )

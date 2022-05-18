@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { colors } from '../utils/yaPlakal'
+import { colorsButton } from '../utils/yaPlakal'
 
 const GroupList = ({
   items,
@@ -17,7 +17,7 @@ const GroupList = ({
           className={
             'list-group-item ' +
             'list-group-item-' +
-            colors[i] +
+            colorsButton[i] +
             (items[item] === selectedItem ? ' active' : '')
           }
           onClick={() => onSelectItem(items[item])}
@@ -34,7 +34,7 @@ const GroupList = ({
           className={
             'list-group-item ' +
             'list-group-item-' +
-            colors[i] +
+            colorsButton[i] +
             (item === selectedItem ? ' active' : '')
           }
           onClick={() => onSelectItem(item)}
@@ -55,11 +55,11 @@ GroupList.defaultProps = {
 }
 
 GroupList.propTypes = {
-  items:            PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  valueProperty:    PropTypes.string.isRequired,
-  contentProperty:  PropTypes.string.isRequired,
-  onSelectItem:     PropTypes.func.isRequired,
-  selectedItem:     PropTypes.object
+  items: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  valueProperty: PropTypes.string.isRequired,
+  contentProperty: PropTypes.string.isRequired,
+  onSelectItem: PropTypes.func.isRequired,
+  selectedItem: PropTypes.object
 }
 
 export default GroupList

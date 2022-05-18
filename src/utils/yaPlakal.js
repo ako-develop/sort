@@ -1,7 +1,7 @@
-const addClass = (classNames) => {
+const addClassName = (classNames) => {
   return 'm-2 badge bg-' + classNames
 }
 
-const colors = ['light']
+const colorsButton = ['light']
 
-export { addClass, colors }
+export { addClassName, colorsButton }

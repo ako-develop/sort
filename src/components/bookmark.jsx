@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const BookMark = ({ status, ...rest }) => {
-  console.log({...rest})
   const bookMarks = (textClass = '') => (
     <i className={'bi bi-check-circle' + textClass}></i>
   )
 
   return (
     <>
-      <button onClick={() => rest.onClick(rest.id)}>
+      <button onClick={() => rest.onToggleBookMark(rest.id)}>
         {status ? bookMarks('-fill') : bookMarks()}
       </button>
     </>
